@@ -1,7 +1,7 @@
 // Seeds a handful of users, two projects, and a few tasks (including one
 // Blocked task) so the app has something to show right after setup.
 require('dotenv').config();
-const { sequelize, User, Project, Task, ActivityLog } = require('./models');
+const { sequelize, User, Project, Task, ActivityLog, Employee, ProjectDeveloper } = require('./models');
 
 async function seed() {
   await sequelize.sync({ force: true });
@@ -10,6 +10,13 @@ async function seed() {
     { name: 'Alice Chen', email: 'alice@example.com' },
     { name: 'Bob Martinez', email: 'bob@example.com' },
     { name: 'Carol Singh', email: 'carol@example.com' },
+  ]);
+
+  const [emp1, emp2, emp3, emp4] = await Employee.bulkCreate([
+    { name: 'Alice Chen', email: 'alice@dev.com', position: 'Frontend Developer', department: 'Engineering', joinDate: '2024-01-15' },
+    { name: 'Bob Martinez', email: 'bob@dev.com', position: 'Backend Developer', department: 'Engineering', joinDate: '2023-06-01' },
+    { name: 'Carol Singh', email: 'carol@dev.com', position: 'Full Stack Developer', department: 'Engineering', joinDate: '2024-03-10' },
+    { name: 'David Lee', email: 'david@dev.com', position: 'DevOps Engineer', department: 'Engineering', joinDate: '2023-09-20' },
   ]);
 
   const website = await Project.create({
@@ -25,6 +32,15 @@ async function seed() {
     deadline: '2026-12-20',
     status: 'Planning',
   });
+
+  // Assign developers to projects
+  await ProjectDeveloper.bulkCreate([
+    { projectId: website.id, employeeId: emp1.id, role: 'Frontend Lead' },
+    { projectId: website.id, employeeId: emp2.id, role: 'Backend Developer' },
+    { projectId: website.id, employeeId: emp4.id, role: 'DevOps' },
+    { projectId: mobile.id, employeeId: emp1.id, role: 'Frontend Developer' },
+    { projectId: mobile.id, employeeId: emp3.id, role: 'Full Stack Developer' },
+  ]);
 
   const tasks = await Task.bulkCreate([
     {

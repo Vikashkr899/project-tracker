@@ -54,6 +54,20 @@ export const api = {
   listUsers: () => request('/users'),
   createUser: (data) => request('/users', { method: 'POST', body: JSON.stringify(data) }),
 
+  // Employees
+  listEmployees: () => request('/employees'),
+  getEmployee: (id) => request(`/employees/${id}`),
+  createEmployee: (data) => request('/employees', { method: 'POST', body: JSON.stringify(data) }),
+  updateEmployee: (id, data) => request(`/employees/${id}`, { method: 'PATCH', body: JSON.stringify(data) }),
+  deleteEmployee: (id) => request(`/employees/${id}`, { method: 'DELETE' }),
+  
+  // Project-Developer assignments
+  assignEmployeeToProject: (projectId, employeeId, role = 'Developer') =>
+    request('/employees/assign', { method: 'POST', body: JSON.stringify({ projectId, employeeId, role }) }),
+  removeEmployeeFromProject: (projectId, employeeId) =>
+    request('/employees/remove', { method: 'POST', body: JSON.stringify({ projectId, employeeId }) }),
+  getProjectDevelopers: (projectId) => request(`/employees/project/${projectId}/developers`),
+
   // Activity
   listActivity: (params = {}) => {
     const qs = new URLSearchParams(params).toString();

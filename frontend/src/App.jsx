@@ -3,6 +3,7 @@ import Login from './pages/Login.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import Projects from './pages/Projects.jsx';
 import ProjectDetail from './pages/ProjectDetail.jsx';
+import Employees from './pages/Employees.jsx';
 
 const SESSION_KEY = 'project-tracker-session';
 
@@ -78,6 +79,9 @@ export default function App() {
             <button className={view.page === 'projects' ? 'active' : ''} onClick={() => setView({ page: 'projects' })}>
               Projects
             </button>
+            <button className={view.page === 'employees' ? 'active' : ''} onClick={() => setView({ page: 'employees' })}>
+              Employees
+            </button>
           </nav>
 
           <div className="user-panel">
@@ -95,6 +99,7 @@ export default function App() {
         {view.page === 'project' && (
           <ProjectDetail projectId={view.projectId} onBack={() => setView({ page: 'projects' })} />
         )}
+        {view.page === 'employees' && <Employees />}
       </main>
     </div>
   );

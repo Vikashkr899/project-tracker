@@ -512,6 +512,130 @@ button.link-button { border: none; background: none; color: var(--primary); padd
   font-weight: 600;
 }
 
+.page-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.page-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0 0 16px 0;
+}
+
+.page-kicker {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #7c3aed;
+  font-weight: 700;
+  margin: 0;
+}
+
+.page-header-row h2 {
+  margin: 4px 0 0;
+  font-size: 28px;
+  color: #1f2430;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.table-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.03);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.data-table thead {
+  background: #f8f9fb;
+  border-bottom: 1px solid var(--border);
+}
+
+.data-table th {
+  padding: 14px 16px;
+  text-align: left;
+  font-weight: 700;
+  color: #6b7280;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.data-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #f3f4f6;
+  color: var(--text);
+}
+
+.data-table tbody tr:hover {
+  background: #fafbfc;
+}
+
+.name-cell {
+  font-weight: 600;
+}
+
+.status-active { background: #dcfce7; color: #15803d; }
+.status-inactive { background: #f3f4f6; color: #374151; }
+.status-on\ leave { background: #fef3c7; color: #92400e; }
+
+.empty-state {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.modal-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.modal-form input,
+.modal-form select {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  font: inherit;
+}
+
+.modal-form input:focus,
+.modal-form select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.loading {
+  padding: 32px;
+  text-align: center;
+  color: var(--muted);
+}
+
 .metrics-row {
   display: grid;
   grid-template-columns: repeat(4, minmax(150px, 1fr));

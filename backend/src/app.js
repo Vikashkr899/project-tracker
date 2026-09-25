@@ -6,6 +6,7 @@ const taskRoutes = require('./routes/taskRoutes');
 const userRoutes = require('./routes/userRoutes');
 const activityRoutes = require('./routes/activityRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
+const employeeRoutes = require('./routes/employeeRoutes');
 const { errorHandler } = require('./middleware/errorHandler');
 
 const app = express();
@@ -20,6 +21,7 @@ app.use('/api/tasks', taskRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/activity', activityRoutes);
 app.use('/api/dashboard', dashboardRoutes);
+app.use('/api/employees', employeeRoutes);
 
 app.use((req, res) => res.status(404).json({ error: 'NotFound', message: 'Route not found' }));
 app.use(errorHandler);
